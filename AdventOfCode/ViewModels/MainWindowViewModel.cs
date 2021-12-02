@@ -20,7 +20,7 @@ namespace AdventOfCode.ViewModels
         private Puzzle _selectedPuzzle;
         private MethodInfo _selectedMethod;
         private string _puzzleInput;
-        private string? _puzzleResult;
+        private string _puzzleResult;
 
         #region Constructor
         
@@ -34,23 +34,11 @@ namespace AdventOfCode.ViewModels
             
             Puzzles = AdventOfCodeLib.AdventOfCodeLibrary.EnumeratePuzzles().ToList();
             SelectedPuzzle = Puzzles.First();
+            SelectedMethod = SelectedPuzzle.Methods.First();
+            PuzzleInput = string.Empty;
+            PuzzleResult = string.Empty;
         }
 
-        private void ExecuteRunPuzzleCommand()
-        {
-            var instance = Activator.CreateInstance(SelectedPuzzle.PuzzleType);
-            var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-            try
-            {
-                PuzzleResult = SelectedMethod.Invoke(instance, new object?[]{input})?.ToString();
-            }
-            catch (Exception e)
-            {
-                PuzzleResult = e.InnerException?.ToString();
-            }
-            
-        }
-        
         #endregion
 
         #region Properties
@@ -90,6 +78,21 @@ namespace AdventOfCode.ViewModels
         #region Commands
         
         public ReactiveCommand<Unit, Unit> RunPuzzleCommand { get; private set; }
+        
+        private void ExecuteRunPuzzleCommand()
+        {
+            var instance = Activator.CreateInstance(SelectedPuzzle.PuzzleType);
+            var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                PuzzleResult = SelectedMethod.Invoke(instance, new object?[]{input})?.ToString();
+            }
+            catch (Exception e)
+            {
+                //TODO: ValidationError in Avalonia?
+                PuzzleResult = e.InnerException?.ToString();
+            }
+        }
 
         #endregion
 

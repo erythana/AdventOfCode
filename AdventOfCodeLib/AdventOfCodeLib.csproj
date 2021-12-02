@@ -6,9 +6,4 @@
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\AdventOfCodePuzzles\AdventOfCodePuzzles.csproj" />
-    </ItemGroup>
-
 </Project>

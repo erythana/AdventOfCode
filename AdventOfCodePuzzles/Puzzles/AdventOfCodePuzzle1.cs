@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AdventOfCodePuzzles.Attributes;
-using AdventOfCodePuzzles.Interfaces;
 using AdventOfCodePuzzles.Models;
 
 namespace AdventOfCodePuzzles

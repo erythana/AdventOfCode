@@ -7,9 +7,6 @@
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/bin/Debug/net5.0/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/bin/Debug/net5.0/ref/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/bin/Debug/net5.0/AdventOfCodeLib.pdb
-/home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/bin/Debug/net5.0/AdventOfCodePuzzles.dll
-/home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/bin/Debug/net5.0/AdventOfCodePuzzles.pdb
-/home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/AdventOfCodeLib.csproj.CopyComplete
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/ref/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/AdventOfCodeLib.pdb

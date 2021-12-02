@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
-      "AdventOfCodePuzzles/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/AdventOfCodePuzzles.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/AdventOfCodePuzzles.dll": {}
-        }
-      }
-    }
+    "net5.0": {}
   },
-  "libraries": {
-    "AdventOfCodePuzzles/1.0.0": {
-      "type": "project",
-      "path": "../AdventOfCodePuzzles/AdventOfCodePuzzles.csproj",
-      "msbuildProject": "../AdventOfCodePuzzles/AdventOfCodePuzzles.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "AdventOfCodePuzzles >= 1.0.0"
-    ]
+    "net5.0": []
   },
   "packageFolders": {
     "/home/chris/.nuget/packages/": {}
@@ -50,11 +31,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/AdventOfCodePuzzles.csproj": {
-              "projectPath": "/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/AdventOfCodePuzzles.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

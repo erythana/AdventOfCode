@@ -24,7 +24,7 @@ namespace AdventOfCodeLib
                 .Where(t => t.GetInterface(nameof(IPuzzleClass)) is not null && !t.IsAbstract) 
                 .Select(x =>
                     new Puzzle(x, x.GetMethods()
-                        .Where(m => m.GetCustomAttribute(typeof(PuzzleMethodAttribute), true) is not null))).ToList();
+                        .Where(m => m.GetCustomAttribute(typeof(PuzzleMethodAttribute), true) is not null)));
 
         }
     }

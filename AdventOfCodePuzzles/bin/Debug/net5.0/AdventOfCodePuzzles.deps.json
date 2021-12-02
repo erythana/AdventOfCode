@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v5.0": {
       "AdventOfCodePuzzles/1.0.0": {
+        "dependencies": {
+          "AdventOfCodeLib": "1.0.0"
+        },
         "runtime": {
           "AdventOfCodePuzzles.dll": {}
+        }
+      },
+      "AdventOfCodeLib/1.0.0": {
+        "runtime": {
+          "AdventOfCodeLib.dll": {}
         }
       }
     }
   },
   "libraries": {
     "AdventOfCodePuzzles/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AdventOfCodeLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

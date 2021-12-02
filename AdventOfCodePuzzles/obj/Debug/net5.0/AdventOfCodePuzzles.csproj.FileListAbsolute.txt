@@ -1,0 +1,12 @@
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.csproj.AssemblyReference.cache
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.GeneratedMSBuildEditorConfig.editorconfig
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.AssemblyInfoInputs.cache
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.AssemblyInfo.cs
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.csproj.CoreCompileInputs.cache
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/AdventOfCodePuzzles.deps.json
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/AdventOfCodePuzzles.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/ref/AdventOfCodePuzzles.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/AdventOfCodePuzzles.pdb
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/ref/AdventOfCodePuzzles.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.pdb

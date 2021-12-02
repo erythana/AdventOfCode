@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AdventOfCode/App.axaml" value="AdventOfCode/AdventOfCode.csproj" />
+        <entry key="AdventOfCode/Views/MainWindow.axaml" value="AdventOfCode/AdventOfCode.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

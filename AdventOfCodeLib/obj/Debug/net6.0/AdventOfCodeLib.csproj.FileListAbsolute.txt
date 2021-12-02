@@ -1,0 +1,12 @@
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/bin/Debug/net6.0/AdventOfCodeLib.deps.json
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/bin/Debug/net6.0/AdventOfCodeLib.dll
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/bin/Debug/net6.0/ref/AdventOfCodeLib.dll
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/bin/Debug/net6.0/AdventOfCodeLib.pdb
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.csproj.AssemblyReference.cache
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.AssemblyInfoInputs.cache
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.AssemblyInfo.cs
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.csproj.CoreCompileInputs.cache
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.dll
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/ref/AdventOfCodeLib.dll
+/home/chris/RiderProjects/AdventOfCode2021/AdventOfCodeLib/obj/Debug/net6.0/AdventOfCodeLib.pdb

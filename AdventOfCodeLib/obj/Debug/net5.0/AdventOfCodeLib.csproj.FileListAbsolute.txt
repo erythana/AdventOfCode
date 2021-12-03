@@ -10,3 +10,15 @@
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/ref/AdventOfCodeLib.dll
 /home/chris/RiderProjects/AdventOfCode/AdventOfCodeLib/obj/Debug/net5.0/AdventOfCodeLib.pdb
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.deps.json
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.dll
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\ref\AdventOfCodeLib.dll
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.pdb
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.csproj.AssemblyReference.cache
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.AssemblyInfoInputs.cache
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.AssemblyInfo.cs
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.csproj.CoreCompileInputs.cache
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.dll
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\ref\AdventOfCodeLib.dll
+C:\Users\sdk150\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.pdb

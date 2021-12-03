@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iV6cK+r0B5vc0FeuKzEqK0XjXa0MQKMSR1KnBrvK4+/EIsu1d2Ix492x/V1XYv3AHHGwUL4oISRhSzYyCqUkjw==",
+  "dgSpecHash": "/ck1BgV2tURsdIyOxRcvGZGLsTSeNTkpOewetD5D3MnaSY4xsFz9KmN3RrmCGeO7nJcn+74z2I5fMzHvcHhf6g==",
   "success": true,
-  "projectFilePath": "/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/AdventOfCodePuzzles.csproj",
+  "projectFilePath": "C:\\Users\\sdk150\\RiderProjects\\AdventOfCode\\AdventOfCodePuzzles\\AdventOfCodePuzzles.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

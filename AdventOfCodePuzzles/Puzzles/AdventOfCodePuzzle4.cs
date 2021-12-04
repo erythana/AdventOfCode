@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using AdventOfCodePuzzles.Models;
 
@@ -61,6 +62,7 @@ namespace AdventOfCodePuzzles
                     }
                 }
             }
+
             return winnerQueue.Pop();
         }
 
@@ -76,19 +78,19 @@ namespace AdventOfCodePuzzles
                     allTrueX &= grid.Value[x, y];
                     allTrueY &= grid.Value[y, x];
                 }
-        
+
                 if (!allTrueX && !allTrueY)
                     continue;
-        
+
                 var sum = ReturnSumOfGridByFunc(grid, gridLength, b => !b);
                 bingoSum = int.Parse(bingoNumber) * sum;
                 return true;
             }
-        
+
             bingoSum = -1;
             return false;
         }
-        
+
         private static void MarkBingoField(KeyValuePair<string[,], bool[,]> grid, int gridLength, string bingoNumber)
         {
             for (int x = 0; x < gridLength; x++)

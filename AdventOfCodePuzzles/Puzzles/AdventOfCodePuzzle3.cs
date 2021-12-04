@@ -12,7 +12,7 @@ namespace AdventOfCodePuzzles
             var inputCount = 0;
             var length = input.FirstOrDefault().Length;
             var intFounds = new int[length];
-            
+
             foreach (var line in input)
             {
                 inputCount++;
@@ -23,80 +23,57 @@ namespace AdventOfCodePuzzles
                         intFounds[i] += currentNumber;
                 }
             }
-            
+
             var binaryRepresentationGamma = string.Empty;
             for (int i = 0; i < intFounds.Length; i++)
             {
                 binaryRepresentationGamma += (inputCount / 2 < intFounds[i]) ? 1 : 0;
             }
+
             var maxInt = Math.Pow(2, length) - 1;
             var gamma = Convert.ToInt32(binaryRepresentationGamma, 2);
             var epsilon = maxInt - gamma;
-            
-            return gamma*epsilon;
+
+            return gamma * epsilon;
         }
 
         public override object SolvePuzzle2(IEnumerable<string> input)
         {
-            void RemoveEntriesFromResultset(int currentIndexPosition, ICollection<string> list, Func<int, int, bool> matchesNumberFunc)
-            {
-                var oneFounds = OneFounds(list, currentIndexPosition);
-                var moreOrEqual = list.Count / 2.0 <= oneFounds;
-                var target = moreOrEqual ? 1 : 0;
-                foreach (var oxygenItem in list.ToList())
-                {
-                    if (list.Count > 1 && !matchesNumberFunc(oxygenItem[currentIndexPosition] - '0', target))
-                        list.Remove(oxygenItem);
-                }
-            }
-
             var modifiedInput = input.ToArray();
             var length = modifiedInput.FirstOrDefault().Length;
 
             var oxygenResult = new List<string>(modifiedInput);
             var scrubberResult = new List<string>(modifiedInput);
             
-            Func<int, int, bool> oxygenScrubberCriteria = (i, t) => i == t;
+            Func<bool, int> targetSelector = b => b ? 1 : 0;
+            Func<int, int, bool> oxygenMatch = (listSize, ones) => listSize / 2.0 <= ones;
+            Func<int, int, bool> scrubberMatch = (listSize, zeros) => listSize / 2.0 >= zeros;
 
             for (int i = 0; i < length; i++)
             {
+                var oxygenSize = oxygenResult.Count;
                 var oneFounds = OneFounds(oxygenResult, i);
+                RemoveEntriesFromResultSet(oxygenResult, i,
+                    num => num == targetSelector(oxygenMatch(oxygenSize, oneFounds)));
 
-                var moreOrEqual = oxygenResult.Count / 2.0 <= oneFounds;
-                foreach (var oxygenItem in oxygenResult.ToList())
-                {
-                    var target = moreOrEqual ? 1 : 0;
-                    if (oxygenResult.Count > 1 && !oxygenScrubberCriteria(oxygenItem[i] - '0', target))
-                    {
-                        oxygenResult.Remove(oxygenItem);
-                    }
-                }
-                
-                oneFounds = OneFounds(scrubberResult, i);
-                
-                var lessOrEqual = scrubberResult.Count / 2.0 >= scrubberResult.Count - oneFounds;
-                foreach (var scrubberItem in scrubberResult.ToList())
-                {
-                    var target = lessOrEqual ? 0 : 1;
-                    if (scrubberResult.Count > 1 && !oxygenScrubberCriteria(scrubberItem[i] - '0', target))
-                    {
-                        scrubberResult.Remove(scrubberItem);
-                    }
-                }
+                var scrubberSize = scrubberResult.Count;
+                var zeroFounds = scrubberResult.Count - OneFounds(scrubberResult, i);
+                RemoveEntriesFromResultSet(scrubberResult, i,
+                    num => num == targetSelector(!scrubberMatch(scrubberSize, zeroFounds)));
             }
-            return Convert.ToInt32(oxygenResult[0],2) * Convert.ToInt32(scrubberResult[0], 2);
+
+            return Convert.ToInt32(oxygenResult[0], 2) * Convert.ToInt32(scrubberResult[0], 2);
 
             int OneFounds(IEnumerable<string> inputEnumerable, int i)
-            {
-                var oneFounds = 0;
-                foreach (var line in inputEnumerable)
-                {
-                    var currentNumber = line[i] - '0';
-                    if (currentNumber == 1)
-                        oneFounds++;
-                }
+                => inputEnumerable.Select(line => line[i] - '0').Count(currentNumber => currentNumber == 1);
 
-                return oneFounds;
+            void RemoveEntriesFromResultSet(ICollection<string> list, int currentIndexPosition, Func<int, bool> matchesNumberFunc)
+            {
+                foreach (var oxygenItem in list.ToList())
+                {
+                    if (list.Count > 1 && !matchesNumberFunc(oxygenItem[currentIndexPosition] - '0'))
+                        list.Remove(oxygenItem);
+                }
             }
         }
     }

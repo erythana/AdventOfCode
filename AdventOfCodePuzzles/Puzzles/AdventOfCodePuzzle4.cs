@@ -10,16 +10,17 @@ namespace AdventOfCodePuzzles
     {
         public override object SolvePuzzle1(IEnumerable<string> input)
         {
-            var gridLength = 5;
-
             var modifiedInput = input.ToArray();
             var bingoNumber = modifiedInput[0].Split(',');
+            
+            var gridLength = modifiedInput[2].Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+            
             var grids = new Dictionary<string[,], bool[,]>();
 
             //Parse Grids
             for (var i = 1; i < modifiedInput.Length; i += gridLength) //Start with grids
             {
-                grids.Add(ParseGrid(modifiedInput[i..(i + gridLength)], gridLength), new bool[5, 5]);
+                grids.Add(ParseGrid(modifiedInput[i..(i + gridLength)], gridLength), new bool[gridLength, gridLength]);
             }
 
             for (int i = 0; i < bingoNumber.Length; i++)
@@ -38,16 +39,17 @@ namespace AdventOfCodePuzzles
         public override object SolvePuzzle2(IEnumerable<string> input)
         {
             var winnerQueue = new Stack<int>();
-            var gridLength = 5;
-
+            
             var modifiedInput = input.ToArray();
             var bingoNumber = modifiedInput[0].Split(',');
+            var gridLength = modifiedInput[2].Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+            
             var grids = new Dictionary<string[,], bool[,]>();
 
             //Parse Grids
             for (var i = 1; i < modifiedInput.Length; i += gridLength)
             {
-                grids.Add(ParseGrid(modifiedInput[i..(i + gridLength)], gridLength), new bool[5, 5]);
+                grids.Add(ParseGrid(modifiedInput[i..(i + gridLength)], gridLength), new bool[gridLength, gridLength]);
             }
 
             for (int i = 0; i < bingoNumber.Length; i++)

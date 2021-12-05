@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
-using System.Reactive.Linq;
 using System.Reflection;
-using System.Text;
-using System.Windows.Input;
 using AdventOfCodeLib.Core;
-using Avalonia.Controls;
-using Avalonia.Data;
-using DynamicData.Binding;
 using ReactiveUI;
 
 namespace AdventOfCode.ViewModels
@@ -85,7 +79,11 @@ namespace AdventOfCode.ViewModels
             var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
             try
             {
-                PuzzleResult = SelectedMethod.Invoke(instance, new object?[]{input})?.ToString();
+                var stopWatch = new Stopwatch();
+                stopWatch.Start();
+                var result = SelectedMethod.Invoke(instance, new object?[] {input})?.ToString();
+                stopWatch.Stop();
+                PuzzleResult = $"{result}\nOpereation took {stopWatch.ElapsedMilliseconds}ms";
             }
             catch (Exception e)
             {

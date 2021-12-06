@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reactive;
 using System.Reflection;
 using AdventOfCodeLib.Core;
+using AdventOfCodePuzzles.Models;
+using BenchmarkDotNet.Running;
 using ReactiveUI;
 
 namespace AdventOfCode.ViewModels
@@ -75,8 +77,9 @@ namespace AdventOfCode.ViewModels
         
         private void ExecuteRunPuzzleCommand()
         {
-            var instance = Activator.CreateInstance(SelectedPuzzle.PuzzleType);
+            
             var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            var instance = Activator.CreateInstance(SelectedPuzzle.PuzzleType);
             try
             {
                 var stopWatch = new Stopwatch();
@@ -89,6 +92,7 @@ namespace AdventOfCode.ViewModels
             {
                 //TODO: ValidationError in Avalonia?
                 PuzzleResult = e.InnerException?.ToString();
+                
             }
         }
 

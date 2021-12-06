@@ -28,3 +28,16 @@ C:/Users/sdk150/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/
 C:/Users/sdk150/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.dll
 C:/Users/sdk150/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/ref/AdventOfCodePuzzles.dll
 C:/Users/sdk150/RiderProjects/AdventOfCode/AdventOfCodePuzzles/obj/Debug/net5.0/AdventOfCodePuzzles.pdb
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/x86/KernelTraceControl.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/x86/KernelTraceControl.Win61.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/x86/msdia140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/x86/msvcp140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/x86/vcruntime140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/amd64/KernelTraceControl.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/amd64/msdia140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/amd64/msvcp140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/amd64/vcruntime140.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/amd64/vcruntime140_1.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/TraceReloggerLib.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/Dia2Lib.dll
+/home/chris/RiderProjects/AdventOfCode/AdventOfCodePuzzles/bin/Debug/net5.0/OSExtensions.dll

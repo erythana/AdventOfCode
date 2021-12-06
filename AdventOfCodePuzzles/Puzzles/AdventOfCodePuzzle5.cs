@@ -81,7 +81,7 @@ namespace AdventOfCodePuzzles
                     {
                         if ((kvp.Key.x + target.x + 1) % 2 != (kvp.Key.y + target.y + 1) % 2)
                             continue; //Check if really diagonal
-                        
+
                         var xSourceHigher = kvp.Key.x >= target.x;
                         var ySourceHigher = kvp.Key.y >= target.y;
                         var xStep = xSourceHigher ? -1 : 1;
@@ -95,6 +95,7 @@ namespace AdventOfCodePuzzles
                     }
                 }
             }
+
             return resultDict.Count(x => x.Value >= 2);
         }
 

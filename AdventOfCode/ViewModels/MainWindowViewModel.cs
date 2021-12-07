@@ -5,8 +5,6 @@ using System.Linq;
 using System.Reactive;
 using System.Reflection;
 using AdventOfCodeLib.Core;
-using AdventOfCodePuzzles.Models;
-using BenchmarkDotNet.Running;
 using ReactiveUI;
 
 namespace AdventOfCode.ViewModels

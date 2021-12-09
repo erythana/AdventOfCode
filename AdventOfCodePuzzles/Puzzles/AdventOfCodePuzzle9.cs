@@ -85,9 +85,8 @@ namespace AdventOfCodePuzzles
             {
                 var targetValues = new List<int>(); 
                 for (int i = lowPerRun -1; i <= highPerRun +1; i++)
-                {
                     targetValues.Add(i);
-                }
+                
                 if (IsPointValidBasin(new Point(target.X - 1, target.Y), targetValues, out var basinTarget))
                     AddAndCheckBasin(source, basinTarget, grid[basinTarget.Y][basinTarget.X]);
 

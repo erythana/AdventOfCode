@@ -1,175 +1,180 @@
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using AdventOfCodeLib.Extensions;
 using AdventOfCodePuzzles.Models;
 
-namespace AdventOfCodePuzzles;
-
-public class AdventOfCodePuzzle11 : PuzzleBase
+namespace AdventOfCodePuzzles
 {
-    private class Octopus
+    public class AdventOfCodePuzzle11 : PuzzleBase
     {
-        private int lightLevel;
-        
-        public Octopus(int lightLevel)
+        private class Octopus
         {
-            this.lightLevel = lightLevel;
-            Locked = false;
-        }
+            private int lightLevel;
 
-        public int FlashCounter { get; private set; }
-
-        public void Flash()
-        {
-            if (Locked) return;
-            
-            Locked = true;
-            FlashCounter++;
-            lightLevel = 0;
-        }
-
-        public bool ShouldFlashAfterIncrease()
-        {
-            if (!Locked)
+            public Octopus(int lightLevel)
             {
-                lightLevel++;
+                this.lightLevel = lightLevel;
+                Locked = false;
             }
 
-            return lightLevel > 9;
+            public int FlashCounter { get; private set; }
+
+            public void Flash()
+            {
+                if (Locked) return;
+
+                Locked = true;
+                FlashCounter++;
+                lightLevel = 0;
+            }
+
+            public bool ShouldFlashAfterIncrease()
+            {
+                if (!Locked)
+                {
+                    lightLevel++;
+                }
+
+                return lightLevel > 9;
+            }
+
+            public bool Locked { get; set; }
         }
 
-        public bool Locked { get; set; }
-    }
-
-    public override object SolvePuzzle1(IEnumerable<string> input)
-    {
-        var flashes = 0;
-        var steps = 100;
-        var grid = input.Select(x => x.Select(x => new Octopus(x - '0')).ToList()).ToList();
-        var octopusToNeighbors = new Dictionary<Octopus, IEnumerable<Octopus>>();
-
-        Func<List<List<Octopus>>, Point, IEnumerable<Point>> getNeighbors = (grid2d, current) =>
+        public override object SolvePuzzle1(IEnumerable<string> input)
         {
-            var neighbors = new List<Point>
+            var flashes = 0;
+            var steps = 100;
+            var grid = input.Select(x => x.Select(x => new Octopus(x - '0')).ToList()).ToList();
+            var octopusToNeighbors = new Dictionary<Octopus, IEnumerable<Octopus>>();
+
+            Func<List<List<Octopus>>, Point, IEnumerable<Point>> getNeighbors = (grid2d, current) =>
             {
-                new(current.X - 1, current.Y + 1),
-                new(current.X - 1, current.Y),
-                new(current.X - 1, current.Y - 1),
-                new(current.X + 1, current.Y - 1),
-                new(current.X + 1, current.Y),
-                new(current.X + 1, current.Y + 1),
-                new(current.X, current.Y - 1),
-                new(current.X, current.Y + 1),
+                var neighbors = new List<Point>
+                {
+                    new(current.X - 1, current.Y + 1),
+                    new(current.X - 1, current.Y),
+                    new(current.X - 1, current.Y - 1),
+                    new(current.X + 1, current.Y - 1),
+                    new(current.X + 1, current.Y),
+                    new(current.X + 1, current.Y + 1),
+                    new(current.X, current.Y - 1),
+                    new(current.X, current.Y + 1),
+                };
+                return neighbors.Where(p => p.Y >= 0 && p.Y < grid2d.Count && p.X >= 0 && p.X < grid2d[p.Y].Count);
             };
-            return neighbors.Where(p => p.Y >= 0 && p.Y < grid2d.Count && p.X >= 0 && p.X < grid2d[p.Y].Count);
-        };
 
-        for (int i = 0; i < steps; i++)
-        {
-            var octopusFlashList = new HashSet<Octopus>();
-            for (int y = 0; y < grid.Count; y++)
+            for (int i = 0; i < steps; i++)
             {
-                for (int x = 0; x < grid[y].Count; x++)
+                var octopusFlashList = new HashSet<Octopus>();
+                for (int y = 0; y < grid.Count; y++)
                 {
-                    var currentPosition = new Point(x, y);
-                    var octopus = grid[y][x];
-
-                    if (!octopusToNeighbors.ContainsKey(octopus))
+                    for (int x = 0; x < grid[y].Count; x++)
                     {
-                        var neighborList = getNeighbors(grid, currentPosition)
-                            .Select(oPoint => grid[oPoint.Y][oPoint.X]).ToList();
-                        octopusToNeighbors.Add(octopus, neighborList);
+                        var currentPosition = new Point(x, y);
+                        var octopus = grid[y][x];
+
+                        if (!octopusToNeighbors.ContainsKey(octopus))
+                        {
+                            var neighborList = getNeighbors(grid, currentPosition)
+                                .Select(oPoint => grid[oPoint.Y][oPoint.X]).ToList();
+                            octopusToNeighbors.Add(octopus, neighborList);
+                        }
+
+                        if (octopus.ShouldFlashAfterIncrease())
+                            octopusFlashList.Add(octopus);
                     }
-
-                    if (octopus.ShouldFlashAfterIncrease())
-                        octopusFlashList.Add(octopus);
                 }
-            }
 
-            while (octopusFlashList.Any())
-            {
-                var octo = octopusFlashList.First();
-                octo.Flash();
-                octopusFlashList.Remove(octo);
-
-                foreach (var neighbor in octopusToNeighbors[octo])
+                while (octopusFlashList.Any())
                 {
-                    if (neighbor.ShouldFlashAfterIncrease())
-                        octopusFlashList.Add(neighbor);
+                    var octo = octopusFlashList.First();
+                    octo.Flash();
+                    octopusFlashList.Remove(octo);
+
+                    foreach (var neighbor in octopusToNeighbors[octo])
+                    {
+                        if (neighbor.ShouldFlashAfterIncrease())
+                            octopusFlashList.Add(neighbor);
+                    }
                 }
+
+                grid.ApplyActionToGrid(o => o.Locked = false);
             }
 
-            grid.ApplyActionToGrid(o => o.Locked = false);
+            grid.ApplyActionToGrid(o => flashes += o.FlashCounter);
+            return flashes;
         }
 
-        grid.ApplyActionToGrid(o => flashes += o.FlashCounter);
-        return flashes;
-    }
-
-    public override object SolvePuzzle2(IEnumerable<string> input)
-    {
-        var grid = input.CreateGrid2D(i => new Octopus(i - '0'));
-        var octopusToNeighbors = new Dictionary<Octopus, IEnumerable<Octopus>>();
-        var stepCounter = 0;
-
-        Func<List<List<Octopus>>, Point, IEnumerable<Point>> getNeighbors = (grid2d, current) =>
+        public override object SolvePuzzle2(IEnumerable<string> input)
         {
-            var neighbors = new List<Point>
+            var grid = input.CreateGrid2D(i => new Octopus(i - '0'));
+            var octopusToNeighbors = new Dictionary<Octopus, IEnumerable<Octopus>>();
+            var stepCounter = 0;
+
+            Func<List<List<Octopus>>, Point, IEnumerable<Point>> getNeighbors = (grid2d, current) =>
             {
-                new(current.X - 1, current.Y + 1),
-                new(current.X - 1, current.Y),
-                new(current.X - 1, current.Y - 1),
-                new(current.X + 1, current.Y - 1),
-                new(current.X + 1, current.Y),
-                new(current.X + 1, current.Y + 1),
-                new(current.X, current.Y - 1),
-                new(current.X, current.Y + 1),
+                var neighbors = new List<Point>
+                {
+                    new(current.X - 1, current.Y + 1),
+                    new(current.X - 1, current.Y),
+                    new(current.X - 1, current.Y - 1),
+                    new(current.X + 1, current.Y - 1),
+                    new(current.X + 1, current.Y),
+                    new(current.X + 1, current.Y + 1),
+                    new(current.X, current.Y - 1),
+                    new(current.X, current.Y + 1),
+                };
+                return neighbors.Where(p => p.Y >= 0 && p.Y < grid2d.Count && p.X >= 0 && p.X < grid2d[p.Y].Count);
             };
-            return neighbors.Where(p => p.Y >= 0 && p.Y < grid2d.Count && p.X >= 0 && p.X < grid2d[p.Y].Count);
-        };
 
-        while (true)
-        {
-            stepCounter++;
-            var flashCounter = 0;
-            var octopusFlashList = new HashSet<Octopus>();
-            for (int y = 0; y < grid.Count; y++)
+            while (true)
             {
-                for (int x = 0; x < grid[y].Count; x++)
+                stepCounter++;
+                var flashCounter = 0;
+                var octopusFlashList = new HashSet<Octopus>();
+                for (int y = 0; y < grid.Count; y++)
                 {
-                    var currentPosition = new Point(x, y);
-                    var octopus = grid[y][x];
-
-                    if (!octopusToNeighbors.ContainsKey(octopus))
+                    for (int x = 0; x < grid[y].Count; x++)
                     {
-                        var neighborList = getNeighbors(grid, currentPosition)
-                            .Select(oPoint => grid[oPoint.Y][oPoint.X]).ToList();
-                        octopusToNeighbors.Add(octopus, neighborList);
+                        var currentPosition = new Point(x, y);
+                        var octopus = grid[y][x];
+
+                        if (!octopusToNeighbors.ContainsKey(octopus))
+                        {
+                            var neighborList = getNeighbors(grid, currentPosition)
+                                .Select(oPoint => grid[oPoint.Y][oPoint.X]).ToList();
+                            octopusToNeighbors.Add(octopus, neighborList);
+                        }
+
+                        if (octopus.ShouldFlashAfterIncrease())
+                            octopusFlashList.Add(octopus);
                     }
-
-                    if (octopus.ShouldFlashAfterIncrease())
-                        octopusFlashList.Add(octopus);
                 }
-            }
 
-            while (octopusFlashList.Any())
-            {
-                var octo = octopusFlashList.First();
-                octo.Flash();
-                flashCounter++;
-                octopusFlashList.Remove(octo);
-
-                foreach (var neighbor in octopusToNeighbors[octo])
+                while (octopusFlashList.Any())
                 {
-                    if (neighbor.ShouldFlashAfterIncrease())
-                        octopusFlashList.Add(neighbor);
+                    var octo = octopusFlashList.First();
+                    octo.Flash();
+                    flashCounter++;
+                    octopusFlashList.Remove(octo);
+
+                    foreach (var neighbor in octopusToNeighbors[octo])
+                    {
+                        if (neighbor.ShouldFlashAfterIncrease())
+                            octopusFlashList.Add(neighbor);
+                    }
                 }
+
+                if (flashCounter == grid.Count * grid.Count)
+                    break;
+
+                grid.ApplyActionToGrid(o => o.Locked = false);
             }
-            if (flashCounter == grid.Count * grid.Count)
-                break;
 
-            grid.ApplyActionToGrid(o => o.Locked = false);
+            return stepCounter;
         }
-
-        return stepCounter;
     }
 }

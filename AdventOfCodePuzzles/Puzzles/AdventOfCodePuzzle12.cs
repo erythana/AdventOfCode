@@ -6,41 +6,62 @@ namespace AdventOfCodePuzzles
     {
         public override object SolvePuzzle1(IEnumerable<string> input)
         {
-            var distinctWays = 0;
             var nodeDictionary = new Dictionary<string, Node>();
+            var visited = new Queue<List<Node>>();
 
             foreach (var line in input)
             {
                 var connection = line.Split('-');
-
                 TryAddAndConnectNode(connection[0], connection[1]);
             }
             
             var startNode = nodeDictionary["start"];
             var endNode = nodeDictionary["end"];
-            
-            
-           
-            Node Travel(Node nextNode)
+
+            var singleSmallCaveCount = 0;
+            visited.Enqueue(new List<Node>{startNode});
+            do
             {
-                nextNode.VisitCounter++;
-                foreach (var node in nextNode.Connections.Values.Where(x => x.VisitAllowed))
+                var stepsList = visited.Dequeue();
+                var currentNode = stepsList[^1];
+                if (currentNode != endNode)
                 {
-                    return Travel(node);
+                    foreach (var node in nodeDictionary.Values)
+                    {
+                        node.Reset();
+                        if (stepsList.Contains(node) && node.CanVisitOnlyOnce)
+                            node.VisitCounter = 1;
+                    }
+
+                    currentNode.VisitCounter++;
+                    foreach (var subNode in currentNode.Connections.Where(x => x.Value.CanVisit))
+                    {
+                        var tmpList = stepsList.ToList();
+                        tmpList.Add(subNode.Value);
+                        if (tmpList.Count(x => x.CanVisitOnlyOnce) > 3)//we don't need to go down further, already past minimum
+                            continue;
+                        
+                        visited.Enqueue(tmpList);
+                    }
                 }
-                return nextNode;
-            }
+                else
+                {
+                    stepsList.ForEach(x => Console.Write(x.NodeName + ' '));
+                    Console.WriteLine();
+                    ++singleSmallCaveCount;
+                }
+            } while (visited.Any());
 
-
+            return singleSmallCaveCount;
+            
             void TryAddAndConnectNode(string nodeName, string childNodeName)
             {
-                if (!nodeDictionary.TryGetValue(nodeName, out var node)) //from node is NEW
+                if (!nodeDictionary.ContainsKey(nodeName))
                 {
                     var newNode = new Node(nodeName);
                     nodeDictionary.Add(newNode.NodeName, newNode);
                 }
-
-                if (!nodeDictionary.TryGetValue(childNodeName, out node)) //from node is NEW
+                if (!nodeDictionary.ContainsKey(childNodeName))
                 {
                     var newNode = new Node(childNodeName);
                     nodeDictionary.Add(newNode.NodeName, newNode);
@@ -49,9 +70,6 @@ namespace AdventOfCodePuzzles
                 nodeDictionary[nodeName].Connections.Add(childNodeName, nodeDictionary[childNodeName]);
                 nodeDictionary[childNodeName].Connections.Add(nodeName, nodeDictionary[nodeName]);
             }
-
-
-            return null;
         }
 
         public override object SolvePuzzle2(IEnumerable<string> input)
@@ -70,25 +88,17 @@ namespace AdventOfCodePuzzles
             NodeName = nodeName;
         }
 
-        public string NodeName { get; private set; }
+        public string NodeName { get; }
 
-        public Dictionary<string, Node> Connections { get; set; }
+        public Dictionary<string, Node> Connections { get;}
 
         public int VisitCounter { get; set; }
 
-        public bool VisitAllowed
-        {
-            get => !CanVisitOnlyOnce || VisitCounter < 1;
-        }
+        public bool CanVisit => !CanVisitOnlyOnce || VisitCounter < 1;
 
-        public bool CanVisitOnlyOnce
-        {
-            get => canVisitOnlyOnce ??= NodeName.Any(char.IsLower);
-        }
+        public bool CanVisitOnlyOnce => canVisitOnlyOnce ??= NodeName.Any(char.IsLower);
 
-        public void Reset()
-        {
-            VisitCounter = 0;
-        }
+        public void Reset() => VisitCounter = 0;
+
     }
 }

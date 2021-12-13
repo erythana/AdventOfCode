@@ -38,16 +38,11 @@ namespace AdventOfCodePuzzles
                     {
                         var tmpList = stepsList.ToList();
                         tmpList.Add(subNode.Value);
-                        if (tmpList.Count(x => x.CanVisitOnlyOnce) > 3)//we don't need to go down further, already past minimum
-                            continue;
-                        
                         visited.Enqueue(tmpList);
                     }
                 }
                 else
                 {
-                    stepsList.ForEach(x => Console.Write(x.NodeName + ' '));
-                    Console.WriteLine();
                     ++singleSmallCaveCount;
                 }
             } while (visited.Any());

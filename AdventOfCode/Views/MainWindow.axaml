@@ -34,7 +34,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button HorizontalAlignment="Center" Content="Run Advent of Code Puzzle" Command="{Binding RunPuzzleCommand}" />
-        <TextBox IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding PuzzleResult}"  />
+        <TextBox FontFamily="Monospace" IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding PuzzleResult}" />
     </StackPanel>
 
 

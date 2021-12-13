@@ -29,7 +29,7 @@ namespace AdventOfCodePuzzles
                     foreach (var node in nodeDictionary.Values)
                     {
                         node.Reset();
-                        if (stepsList.Contains(node) && node.CanVisitOnlyOnce)
+                        if (stepsList.Contains(node) && node.CanVisitOnce)
                             node.VisitCounter = 1;
                     }
 
@@ -70,7 +70,7 @@ namespace AdventOfCodePuzzles
         public override object SolvePuzzle2(IEnumerable<string> input)
         {
             var nodeDictionary = new Dictionary<string, Node>();
-            var visited = new Queue<List<Node>>();
+            var visited = new Queue<(bool revisitSmallAllowed, List<Node> path)>();
 
             foreach (var line in input)
             {
@@ -82,31 +82,34 @@ namespace AdventOfCodePuzzles
             var endNode = nodeDictionary["end"];
 
             var singleSmallCaveCount = 0;
-            visited.Enqueue(new List<Node>{startNode});
+            visited.Enqueue((true, new List<Node>{startNode}));
             do
             {
                 var stepsList = visited.Dequeue();
-                var currentNode = stepsList[^1];
+                var currentNode = stepsList.path[^1];
                 if (currentNode != endNode)
                 {
                     foreach (var node in nodeDictionary.Values)
                     {
+                        //Performance improvements to remember the revisitSmall-State. The following loop still hits hard - should state be shared accross all nodes? (rev/val)
                         node.Reset();
-                        if (stepsList.Contains(node) && node.CanVisitOnlyOnce && 
-                            stepsList
-                                .Where(x => x.CanVisitOnlyOnce)
-                                .GroupBy(x => x.NodeName).Any(x => x.Count() >= 2))
-                            node.VisitCounter = 1;
-                        else if (stepsList.Contains(node) && node.CanVisitOnlyOnce)
+                        if (stepsList.path.Contains(node) && node.CanVisitOnce && stepsList.revisitSmallAllowed)
                             node.VisitCounter = 0;
+                        else if (stepsList.path.Contains(node) && node.CanVisitOnce)
+                            node.VisitCounter = 1;
                     }
 
                     currentNode.VisitCounter++;
                     foreach (var subNode in currentNode.Connections.Where(x => x.Value.CanVisit))
                     {
-                        var tmpList = stepsList.ToList();
+                        var tmpList = stepsList.path.ToList();
                         tmpList.Add(subNode.Value);
-                        visited.Enqueue(tmpList);
+
+                        var result = stepsList.revisitSmallAllowed;
+                        if (subNode.Value.CanVisitOnce && stepsList.path.Contains(subNode.Value) )
+                            result = false;
+                        
+                        visited.Enqueue((result, tmpList));
                     }
                 }
                 else
@@ -154,9 +157,9 @@ namespace AdventOfCodePuzzles
 
         public int VisitCounter { get; set; }
 
-        public bool CanVisit => !CanVisitOnlyOnce || !preventVisit && VisitCounter < 1;
+        public bool CanVisit => !CanVisitOnce || !preventVisit && VisitCounter < 1;
 
-        public bool CanVisitOnlyOnce => canVisitOnlyOnce ??= NodeName.Any(char.IsLower);
+        public bool CanVisitOnce => canVisitOnlyOnce ??= NodeName.Any(char.IsLower);
 
         public void Reset() => VisitCounter = 0;
     }

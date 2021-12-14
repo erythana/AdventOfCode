@@ -114,17 +114,17 @@ public class AdventOfCodePuzzle13 : PuzzleBase
 
         var grid = new int[maxY + 1, maxX + 1];
         foreach (var dot in dots)
-        {
             grid[dot.Y, dot.X] += 1;
-        }
 
         foreach (var foldInstruction in instructions)//Only first because of P1
         {
+            var yDimLength = grid.GetLength(0);
+            var xDimLength = grid.GetLength(1);
             if (foldInstruction.axis == 'y')
             {
                 for (int i = 1; i <= foldInstruction.length; i++)
                 {
-                    for (int x = 0; x < grid.GetLength(1); x++)
+                    for (int x = 0; x < xDimLength && foldInstruction.length+i<yDimLength; x++)
                     {
                         grid[foldInstruction.length - i, x] += grid[foldInstruction.length + i, x];
 
@@ -138,7 +138,7 @@ public class AdventOfCodePuzzle13 : PuzzleBase
             {
                 for (int i = 1; i <= foldInstruction.length; i++)
                 {
-                    for (int y = 0; y < grid.GetLength(0); y++)
+                    for (int y = 0; y < yDimLength && foldInstruction.length+i<xDimLength; y++)
                     {
                         grid[y, foldInstruction.length - i] += grid[y, foldInstruction.length + i];
 
@@ -171,12 +171,7 @@ public class AdventOfCodePuzzle13 : PuzzleBase
         for (int newY = miY; newY <= maY; newY++)
         {
             for (int newX = miX; newX <= maX; newX++)
-            {
-                if (results.Contains(new Point(newX, newY)))
-                    output.Append('#');
-                else
-                    output.Append(' ');
-            }
+                output.Append(results.Contains(new Point(newX, newY)) ? '⬛' : '⬜');
             output.AppendLine();
         }
         return output.ToString();

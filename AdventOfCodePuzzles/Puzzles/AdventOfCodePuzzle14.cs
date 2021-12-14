@@ -52,55 +52,59 @@ public class AdventOfCodePuzzle14 : PuzzleBase
         var min = resultDict.Min(x => x.Value);
         
         
-        return max-min;
+        return max - min;
     }
 
     public override object SolvePuzzle2(IEnumerable<string> input)
     {
-        var steps = 2;
         var resultDict = new Dictionary<char, long>();
+        var steps = 40;
         var polymerTemplate = input.First();
         var pairInsertionRules = input
             .Skip(1)
             .Select(line => line.Split("->", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
             .ToDictionary(instruction => instruction[0], instruction => char.Parse(instruction[1]));
 
-        
-        
-        var stepDict = new Dictionary<int, List<char>>
+
+        var stepDictionary = new Dictionary<int, List<Func<int, char>>>();
+        var startFuncs = new Func<int, char>(x => polymerTemplate[x]);
+        stepDictionary.Add(0, new List<Func<int, char>>());
+        for (int i = 0; i < polymerTemplate.Length; i++)
         {
-            [-1] = polymerTemplate.ToList(),
-            [0] = polymerTemplate[1..].ToList(),
-        };
-        var length = polymerTemplate.Length;
+            var capturedIndex = i;
+            stepDictionary[0].Add((_ => startFuncs(capturedIndex)));
+        }
         
-        for (int step = 1; step <= steps; step++)
+        for (int i = 1; i <= steps; i++)
         {
-            stepDict.Add(step, new List<char>());
-            for (int i = 0; i < stepDict[step-1].Count; i++)
+            var inserts = 0;
+            stepDictionary.Add(i, new List<Func<int, char>>());
+            for (int x = 0; x < stepDictionary[i-1].Count - 1; x++)
             {
-                var lookup = new string( new []{stepDict[step-2][i], stepDict[step - 1][i]}) ;
+                var capturedStepIndex = i;
+                var capturedIndex = x;
+                stepDictionary[i].Insert(x+inserts, _ => stepDictionary[capturedStepIndex-1][capturedIndex](_));
+                var previousCharLeft = stepDictionary[i - 1][x](capturedIndex);
+                var previousCharRight = stepDictionary[i - 1][x+1](capturedIndex+1);
+                
+                var lookup = new string(new[] {previousCharLeft, previousCharRight });
                 if (pairInsertionRules.TryGetValue(lookup, out var polymer))
                 {
-                    stepDict[step].Add(polymer);
-                    length++;
+                    inserts++;
+                    stepDictionary[i].Insert(x+inserts, _ => polymer);
                 }
             }
+            var prev = stepDictionary[i - 1];
+            stepDictionary[i].Add(_ => prev[^1](_));
         }
+
 
         var resultSB = new StringBuilder();
-        for (int i = 0; i < polymerTemplate.Length - 1; i++)
+        foreach (var funcs in stepDictionary[steps])
         {
-            for (int j = 0; j < stepDict.Values.Count -1; j++)
-            {
-                resultSB.Append(stepDict[j-1][i]);
-                resultSB.Append(stepDict[j][i]);//as we start at -1 we can access this
-            }
+            resultSB.Append(funcs(58));
         }
-
-        resultSB.Append(polymerTemplate[^1]);
         
-
         foreach (var polymer in resultSB.ToString())
             AddAndCountDictionary(polymer);
         
@@ -110,11 +114,10 @@ public class AdventOfCodePuzzle14 : PuzzleBase
                 resultDict.Add(lookup, 1);
             resultDict[lookup] = ++value;
         }
-
+        
         var max = resultDict.Max(x => x.Value);
+        
         var min = resultDict.Min(x => x.Value);
-        
-        
-        return max-min;
+        return max - min;
     }
 }

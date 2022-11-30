@@ -1,41 +1,32 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:AdventOfCode.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="AdventOfCode.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="AdventOfCode">
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-    
+    <Window.Resources>
+        <DataTemplate x:Key="ComboBoxItemTemplate">
+            <TextBlock Text="{Binding Path=Name}" />
+        </DataTemplate>
+    </Window.Resources>
+
     <StackPanel HorizontalAlignment="Stretch">
         <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="Advent of Code" Margin="20" />
-        <Label HorizontalAlignment="Center"  Content="Advent of Code - Input:" />
-        <TextBox Margin="40, 10" 
+        <TextBox Margin="40, 10"
+                 Watermark="Advent of Code - Input"
                  Height="300"
                  Text="{Binding PuzzleInput}"
                  AcceptsReturn="True" TextWrapping="Wrap"
                  HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-        <ComboBox HorizontalAlignment="Center" Items="{Binding Puzzles, Mode=TwoWay}" SelectedItem="{Binding SelectedPuzzle, Mode=TwoWay}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=PuzzleType.Name}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Center" Items="{Binding SelectedPuzzle.Methods}" SelectedItem="{Binding SelectedMethod}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path= Name}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <ComboBox HorizontalAlignment="Center" Items="{Binding Puzzles, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedPuzzle, Mode=TwoWay}"
+                  ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
+        <ComboBox HorizontalAlignment="Center" Items="{Binding SelectedPuzzle.Methods}"
+                  SelectedItem="{Binding SelectedMethod}" ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
         <Button HorizontalAlignment="Center" Content="Run Advent of Code Puzzle" Command="{Binding RunPuzzleCommand}" />
-        <TextBox IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding PuzzleResult}" />
+        <TextBox IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center"
+                 Text="{Binding PuzzleResult}" />
     </StackPanel>
-
-
 </Window>

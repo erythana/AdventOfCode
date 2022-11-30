@@ -84,17 +84,14 @@ namespace AdventOfCode.ViewModels
                 stopWatch.Start();
                 var result = SelectedMethod.Invoke(instance, new object?[] {input})?.ToString();
                 stopWatch.Stop();
-                PuzzleResult = $"{result}\nOpereation took {stopWatch.ElapsedMilliseconds}ms";
+                PuzzleResult = $"{result}\nOperation took {stopWatch.ElapsedMilliseconds}ms";
             }
             catch (Exception e)
             {
-                //TODO: ValidationError in Avalonia?
                 PuzzleResult = e.InnerException?.ToString();
-                
             }
         }
 
         #endregion
-
     }
 }

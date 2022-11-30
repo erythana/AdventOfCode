@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Drawing;
 using AdventOfCodeLib.Extensions;
 using AdventOfCodePuzzles.Models;
@@ -7,6 +8,7 @@ using static System.Double;
 
 namespace AdventOfCodePuzzles;
 
+[Description("2021 - Puzzle 15")]
 public class AdventOfCodePuzzle15 : PuzzleBase
 {
     public override object SolvePuzzle1(IEnumerable<string> input)

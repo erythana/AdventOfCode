@@ -18,9 +18,11 @@ namespace AdventOfCodePuzzles
                 {
                     maxCalories = tmpCalories > maxCalories ? tmpCalories : maxCalories;
                     tmpCalories = 0;
-                    continue;
                 }
-                tmpCalories += int.Parse(line);
+                else
+                {
+                    tmpCalories += int.Parse(line);
+                }
             }
             return maxCalories;
         }
@@ -35,9 +37,12 @@ namespace AdventOfCodePuzzles
                 {
                     highestValues.Add(tmpCalories);
                     tmpCalories = 0;
-                    continue;
                 }
-                tmpCalories += int.Parse(line);
+                else
+                {
+                    tmpCalories += int.Parse(line);
+                }
+                
             }
             return highestValues.OrderByDescending(x => x).Take(3).Sum();
         }

@@ -75,8 +75,7 @@ namespace AdventOfCode.ViewModels
         
         private void ExecuteRunPuzzleCommand()
         {
-            
-            var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            var input = PuzzleInput.Split(Environment.NewLine, StringSplitOptions.TrimEntries);
             var instance = Activator.CreateInstance(SelectedPuzzle.PuzzleType);
             try
             {

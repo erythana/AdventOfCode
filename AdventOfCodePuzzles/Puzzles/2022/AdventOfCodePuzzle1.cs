@@ -10,14 +10,36 @@ namespace AdventOfCodePuzzles
     {
         public override object SolvePuzzle1(IEnumerable<string> input)
         {
-            
-            return 0;
+            var tmpCalories = 0;
+            var maxCalories = 0;
+            foreach (var line in input)
+            {
+                if (string.IsNullOrEmpty(line))
+                {
+                    maxCalories = tmpCalories > maxCalories ? tmpCalories : maxCalories;
+                    tmpCalories = 0;
+                    continue;
+                }
+                tmpCalories += int.Parse(line);
+            }
+            return maxCalories;
         }
         
         public override object SolvePuzzle2(IEnumerable<string> input)
         {
-           
-            return 0;
+            var highestValues = new HashSet<int>();            
+            var tmpCalories = 0;
+            foreach (var line in input)
+            {
+                if (string.IsNullOrEmpty(line))
+                {
+                    highestValues.Add(tmpCalories);
+                    tmpCalories = 0;
+                    continue;
+                }
+                tmpCalories += int.Parse(line);
+            }
+            return highestValues.OrderByDescending(x => x).Take(3).Sum();
         }
     }
 }

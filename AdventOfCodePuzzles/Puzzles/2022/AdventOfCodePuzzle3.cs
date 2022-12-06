@@ -25,17 +25,37 @@ namespace AdventOfCodePuzzles
                     rightSet.Add(rucksack[i+halfLength]);
                 }
 
-                var tmpChar = leftSet.Intersect(rightSet).First();
-                result += pointsFrom(tmpChar);
+                var commonChar = leftSet.Intersect(rightSet).First();
+                result += returnPointsFrom(commonChar);
             }
             return result;
 
-            int pointsFrom(char character) => character >= 97 ? character - 96 : character - 38;
+            int returnPointsFrom(char character) => character >= 97 ? character - 96 : character - 38;
         }
 
         public override object SolvePuzzle2(IEnumerable<string> input)
         {
-            return 0;
+            var result = 0;
+            var tmpInput = input.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+            var results = new List<char[]>();
+           
+            for (int i = 0; i < tmpInput.Length; i += 3)
+            {
+                results.Clear();
+                for (int j = 0; j < 3; j++)
+                {
+                    var currentLineIndex = i + j;
+                    var line = tmpInput[currentLineIndex];
+                    
+                    results.Add(line.ToCharArray());
+                }
+
+                var commonChar = results[0].Intersect(results[1]).Intersect(results[2]).First();
+                result += returnPointsFrom(commonChar);
+            }
+            return result;
+            
+            int returnPointsFrom(char character) => character >= 97 ? character - 96 : character - 38;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AdventOfCodeLib.Core;
 using ReactiveUI;
 
@@ -26,7 +27,11 @@ namespace AdventOfCode.ViewModels
                 (p, m) => !string.IsNullOrEmpty(p) && m is not null);
             RunPuzzleCommand = ReactiveCommand.Create(ExecuteRunPuzzleCommand, canExecuteRunPuzzleCommand);
             
-            Puzzles = AdventOfCodeLib.AdventOfCodeLibrary.EnumeratePuzzles().ToList();
+            Puzzles = AdventOfCodeLib.AdventOfCodeLibrary
+                .EnumeratePuzzles()
+                .OrderByDescending(x => x.Year)
+                .ThenByDescending(x => x.Day)
+                .ToList();
             SelectedPuzzle = Puzzles.First();
             SelectedMethod = SelectedPuzzle.Methods.First();
             PuzzleInput = string.Empty;

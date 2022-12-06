@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using AdventOfCodeLib.Attributes;
 using AdventOfCodeLib.Extensions;
 using AdventOfCodePuzzles.Models;
 
 namespace AdventOfCodePuzzles
 {
-    [Description("2021 - Puzzle 11")]
+    [PuzzleType("Puzzle 11", 2021, 11)]
     public class AdventOfCodePuzzle11 : PuzzleBase
     {
         private class Octopus

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using AdventOfCodeLib.Attributes;
 using AdventOfCodePuzzles.Models;
 
 namespace AdventOfCodePuzzles
 {
-    [Description("2021 - Puzzle 1")]
+    [PuzzleType("Puzzle 1", 2021, 1)]
     public class AdventOfCodePuzzle1 : PuzzleBase
     {
         public override object SolvePuzzle1(IEnumerable<string> input)

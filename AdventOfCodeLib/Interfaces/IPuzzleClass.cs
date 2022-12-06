@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using AdventOfCodePuzzles.Attributes;
+using AdventOfCodeLib.Attributes;
 
 namespace AdventOfCodePuzzles.Interfaces
 {

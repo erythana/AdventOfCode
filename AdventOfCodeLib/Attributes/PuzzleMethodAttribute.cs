@@ -1,6 +1,4 @@
-using System;
-
-namespace AdventOfCodePuzzles.Attributes
+namespace AdventOfCodeLib.Attributes
 {
     public class PuzzleMethodAttribute : Attribute{}
 }

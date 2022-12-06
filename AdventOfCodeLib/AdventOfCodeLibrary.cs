@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using AdventOfCodeLib.Attributes;
 using AdventOfCodeLib.Core;
-using AdventOfCodePuzzles.Attributes;
 using AdventOfCodePuzzles.Interfaces;
 
 namespace AdventOfCodeLib

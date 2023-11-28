@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using System.Text;
+﻿using System.Text;
 using AdventOfCodeLib.Attributes;
 using AdventOfCodePuzzles.Models;
 
-namespace AdventOfCodePuzzles;
+namespace AdventOfCodePuzzles.Puzzles._2021;
 
 [PuzzleType("Puzzle 14", 2021, 14)]
 public class AdventOfCodePuzzle14 : PuzzleBase

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using AdventOfCodeLib.Attributes;
 using AdventOfCodeLib.Core;
 using AdventOfCodePuzzles.Interfaces;
 
 namespace AdventOfCodeLib
 {
-    public class AdventOfCodeLibrary
+    public static class AdventOfCodeLibrary
     {
         public static IEnumerable<string> ReadInputFromFile(FileInfo file)
         {
@@ -23,7 +18,9 @@ namespace AdventOfCodeLib
             return assembly.GetTypes()
                 .Where(t => t.GetInterface(nameof(IPuzzleClass)) is not null && !t.IsAbstract) 
                 .Select(x =>
-                    new Puzzle(x, x.GetMethods()
+                    new Puzzle(x, 
+                        methods: x
+                        .GetMethods()
                         .Where(m => m.GetCustomAttribute(typeof(PuzzleMethodAttribute), true) is not null)));
         }
     }

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using AdventOfCodeLib.Attributes;
@@ -11,12 +9,13 @@ namespace AdventOfCodeLib.Core
         public Puzzle(Type puzzleType, IEnumerable<MethodInfo> methods)
         {
             PuzzleType = puzzleType;
-            Year =  PuzzleType.GetCustomAttribute(typeof(PuzzleTypeAttribute)) is PuzzleTypeAttribute typeAttribute 
-                ? typeAttribute.Year : 0;
-            Day =  PuzzleType.GetCustomAttribute(typeof(PuzzleTypeAttribute)) is PuzzleTypeAttribute typeAttribute2 
-                ? typeAttribute2.Day : 0;
-            Name =  PuzzleType.GetCustomAttribute(typeof(DescriptionAttribute)) is DescriptionAttribute description 
-                ? $"{Year} - {description.Description}"  : PuzzleType.Name;
+
+            var puzzleTypeAttribute = PuzzleType.GetCustomAttribute(typeof(PuzzleTypeAttribute)) as PuzzleTypeAttribute;
+            
+            Year =  puzzleTypeAttribute?.Year ?? 0;
+            Day =  puzzleTypeAttribute?.Day ?? 0;
+            Name = !string.IsNullOrWhiteSpace(puzzleTypeAttribute?.Description)
+                ? $"{Year} - {puzzleTypeAttribute.Description}" : PuzzleType.Name;
             Methods = methods;
         }
         public string Name { get; }

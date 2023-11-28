@@ -34,3 +34,15 @@ C:\Users\z004hxnh\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\Ad
 C:\Users\z004hxnh\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\refint\AdventOfCodeLib.dll
 C:\Users\z004hxnh\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.pdb
 C:\Users\z004hxnh\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\ref\AdventOfCodeLib.dll
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.deps.json
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.dll
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\bin\Debug\net5.0\AdventOfCodeLib.pdb
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.AssemblyInfoInputs.cache
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.AssemblyInfo.cs
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.csproj.CoreCompileInputs.cache
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.sourcelink.json
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.dll
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\refint\AdventOfCodeLib.dll
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\AdventOfCodeLib.pdb
+C:\Users\christianb\RiderProjects\AdventOfCode\AdventOfCodeLib\obj\Debug\net5.0\ref\AdventOfCodeLib.dll

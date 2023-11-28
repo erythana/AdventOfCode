@@ -5,7 +5,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="AdventOfCode.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="AdventOfCode">
+        Title="AdventOfCode"
+        Width="500"
+        Height="NaN">
     <Window.Resources>
         <DataTemplate x:Key="ComboBoxItemTemplate">
             <TextBlock Text="{Binding Path=Name}" />
@@ -14,19 +16,34 @@
 
     <StackPanel HorizontalAlignment="Stretch">
         <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="Advent of Code" Margin="20" />
-        <TextBox Margin="40, 10"
-                 Watermark="Advent of Code - Input"
-                 Height="300"
-                 Text="{Binding PuzzleInput}"
-                 AcceptsReturn="True" TextWrapping="Wrap"
-                 HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
         <ComboBox HorizontalAlignment="Center" Items="{Binding Puzzles, Mode=TwoWay}"
                   SelectedItem="{Binding SelectedPuzzle, Mode=TwoWay}"
                   ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
         <ComboBox HorizontalAlignment="Center" Items="{Binding SelectedPuzzle.Methods}"
                   SelectedItem="{Binding SelectedMethod}" ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
+
+        <RadioButton HorizontalAlignment="Center" Content="Automatic Input (Web)" GroupName="InputType" IsChecked="{Binding !IsManualInput}" />
+        <RadioButton HorizontalAlignment="Center" Content="Manual Input (Text)" GroupName="InputType" IsChecked="{Binding IsManualInput}" />
+        <TextBox Watermark="AoC Session Cookie"
+                 Text="{Binding SessionCookie}"
+                 IsVisible="{Binding !IsManualInput}"
+                 Width="200" />
+        <TextBox Margin="40, 10"
+                 Watermark="Advent of Code - Manual Input"
+                 Height="300"
+                 Text="{Binding PuzzleInput}"
+                 AcceptsReturn="True" TextWrapping="Wrap"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                 IsVisible="{Binding IsManualInput}" />
+        
         <Button HorizontalAlignment="Center" Content="Run Advent of Code Puzzle" Command="{Binding RunPuzzleCommand}" />
-        <TextBox IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center"
-                 Text="{Binding PuzzleResult}" />
+
+        <TextBox Watermark="Result" UseFloatingWatermark="True" IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center"
+                 Text="{Binding PuzzleResult}"
+                 Width="200" />
+        <TextBox Watermark="Duration (HH:MM:SS.ms)" UseFloatingWatermark="True" IsReadOnly="True" Margin="10" HorizontalAlignment="Center" TextAlignment="Center"
+                 Text="{Binding SolveDuration}"
+                 Width="200" />
     </StackPanel>
 </Window>

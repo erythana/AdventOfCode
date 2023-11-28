@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using AdventOfCodeLib.Attributes;
+﻿using AdventOfCodeLib.Attributes;
 using AdventOfCodePuzzles.Models;
 
-namespace AdventOfCodePuzzles
+namespace AdventOfCodePuzzles.Puzzles._2022
 {
     [PuzzleType("Puzzle 2", 2022, 2)]
     public class AdventOfCode2022Puzzle2 : PuzzleBase

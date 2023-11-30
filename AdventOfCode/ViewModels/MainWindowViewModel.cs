@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Reactive;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -26,6 +25,11 @@ namespace AdventOfCode.ViewModels
         #region Constructor
 
         public MainWindowViewModel()
+        {
+            InitializeProperties();
+        }
+
+        private void InitializeProperties()
         {
             var canExecuteRunPuzzleCommand = this.WhenAnyValue(
                 puzInp => puzInp.PuzzleInput,
@@ -55,7 +59,7 @@ namespace AdventOfCode.ViewModels
 
         #region Properties
 
-        public IList<Puzzle> Puzzles { get; }
+        public IEnumerable<Puzzle> Puzzles { get; private set; }
 
         public Puzzle SelectedPuzzle
         {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdventOfCodePuzzles")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4c981bfd9ac5cd7baec301332a9288c12bb4dde")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e97213654a951a1a14a681deece415297b5fbc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdventOfCodePuzzles")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdventOfCodePuzzles")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

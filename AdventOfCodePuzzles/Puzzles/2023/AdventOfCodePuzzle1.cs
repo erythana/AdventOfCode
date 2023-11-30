@@ -1,4 +1,5 @@
-﻿using AdventOfCodeLib.Attributes;
+﻿using System.Collections.Generic;
+using AdventOfCodeLib.Attributes;
 using AdventOfCodePuzzles.Models;
 
 namespace AdventOfCodePuzzles.Puzzles._2023

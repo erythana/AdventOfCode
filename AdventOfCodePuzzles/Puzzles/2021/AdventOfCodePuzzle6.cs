@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using AdventOfCodeLib.Attributes;
 using AdventOfCodePuzzles.Models;
 
@@ -19,7 +22,7 @@ namespace AdventOfCodePuzzles.Puzzles._2021
                 resultArr[fish] += 1;
             }
             
-            for (int i = 0; i < days; i++)
+            for (var i = 0; i < days; i++)
             {
                 var lastValue = resultArr[0];
                 Array.Copy(resultArr,1, resultArr, 0, resultArr.Length-1);

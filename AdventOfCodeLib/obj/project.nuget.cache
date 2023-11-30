@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/efj3WdfxpyLJ4dOj4ggiStGKpgGwRe8CAVxoj5UnHdLMz5FB57U4ZhFZCJAWE88UUErvfdkjq1X0lDCqwnmTA==",
+  "dgSpecHash": "on2f1qg0AKNoPvKN30crfBrqRhLUroTRowaQJXOSsIQgsECnlkVFrf3qJiJJca9XHVV1Cf+0UkhZ8WTeTKa29g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\christianb\\RiderProjects\\AdventOfCode\\AdventOfCodeLib\\AdventOfCodeLib.csproj",
+  "projectFilePath": "/home/chris/Programming/AdventOfCode/AdventOfCodeLib/AdventOfCodeLib.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

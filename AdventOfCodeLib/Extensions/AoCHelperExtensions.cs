@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace AdventOfCodeLib.Extensions
 {
     public static class AoCHelperExtensions

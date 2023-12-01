@@ -8,24 +8,26 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/chris/.nuget/packages/": {}
+    "C:\\Users\\christianb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/chris/Programming/AdventOfCode/AdventOfCodeLib/AdventOfCodeLib.csproj",
+      "projectUniqueName": "C:\\Users\\christianb\\RiderProjects\\AdventOfCode\\AdventOfCodeLib\\AdventOfCodeLib.csproj",
       "projectName": "AdventOfCodeLib",
-      "projectPath": "/home/chris/Programming/AdventOfCode/AdventOfCodeLib/AdventOfCodeLib.csproj",
-      "packagesPath": "/home/chris/.nuget/packages/",
-      "outputPath": "/home/chris/Programming/AdventOfCode/AdventOfCodeLib/obj/",
+      "projectPath": "C:\\Users\\christianb\\RiderProjects\\AdventOfCode\\AdventOfCodeLib\\AdventOfCodeLib.csproj",
+      "packagesPath": "C:\\Users\\christianb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\christianb\\RiderProjects\\AdventOfCode\\AdventOfCodeLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/chris/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\christianb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

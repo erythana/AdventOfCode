@@ -17,5 +17,9 @@ namespace AdventOfCodeLib.Extensions
         {
             return input.Select(x => x.Select(converter).ToList()).ToList();
         }
+
+        public static bool IsDigit(this char character) => character >= 48 && character <= 57;
+        
+        public static int ToInt(this char character) => character - '0';
     }
 }

@@ -4,7 +4,7 @@ namespace AdventOfCodeLib.Attributes;
 
 public class PuzzleTypeAttribute : DescriptionAttribute
 {
-    public PuzzleTypeAttribute(string description, int year = 0, int day = 0) : base(description)
+    public PuzzleTypeAttribute(string? description, int year = 0, int day = 0) : base(description ??= $"Puzzle {day}")
     {
         Year = year;
         Day = day;

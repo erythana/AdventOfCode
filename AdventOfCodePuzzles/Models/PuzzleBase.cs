@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using AdventOfCodeLib.Attributes;
-using AdventOfCodePuzzles.Interfaces;
+using AdventOfCodeLib.Interfaces;
 
 namespace AdventOfCodePuzzles.Models
 {

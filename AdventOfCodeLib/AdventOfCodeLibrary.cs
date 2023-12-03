@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using AdventOfCodeLib.Attributes;
 using AdventOfCodeLib.Core;
-using AdventOfCodePuzzles.Interfaces;
+using AdventOfCodeLib.Interfaces;
 
 namespace AdventOfCodeLib
 {
@@ -17,7 +17,7 @@ namespace AdventOfCodeLib
 
         public static IEnumerable<Puzzle> EnumeratePuzzles()
         {
-            var assembly = Assembly.Load(nameof(AdventOfCodePuzzles));
+            var assembly = Assembly.Load("AdventOfCodePuzzles");
             return assembly.GetTypes()
                 .Where(t => t.GetInterface(nameof(IPuzzleClass)) is not null && !t.IsAbstract) 
                 .Select(x =>

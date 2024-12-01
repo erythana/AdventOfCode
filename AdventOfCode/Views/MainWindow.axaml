@@ -17,10 +17,10 @@
     <StackPanel HorizontalAlignment="Stretch">
         <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="Advent of Code" Margin="20" />
 
-        <ComboBox HorizontalAlignment="Center" Items="{Binding Puzzles}"
+        <ComboBox HorizontalAlignment="Center" ItemsSource="{Binding Puzzles}"
                   SelectedItem="{Binding SelectedPuzzle, Mode=TwoWay}"
                   ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
-        <ComboBox HorizontalAlignment="Center" Items="{Binding SelectedPuzzle.Methods}"
+        <ComboBox HorizontalAlignment="Center" ItemsSource="{Binding SelectedPuzzle.Methods}"
                   SelectedItem="{Binding SelectedMethod}" ItemTemplate="{StaticResource ComboBoxItemTemplate}" />
 
         <RadioButton HorizontalAlignment="Center" Content="Automatic Input (Web)" GroupName="InputType" IsChecked="{Binding !IsManualInput}" />

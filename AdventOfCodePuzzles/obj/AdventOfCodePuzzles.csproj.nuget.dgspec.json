@@ -13,7 +13,6 @@
         "packagesPath": "/home/chris/.nuget/packages/",
         "outputPath": "/home/chris/Programming/AdventOfCode/AdventOfCodeLib/obj/",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/home/chris/.nuget/NuGet/NuGet.Config"
         ],
@@ -67,7 +66,6 @@
         "packagesPath": "/home/chris/.nuget/packages/",
         "outputPath": "/home/chris/Programming/AdventOfCode/AdventOfCodePuzzles/obj/",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/home/chris/.nuget/NuGet/NuGet.Config"
         ],

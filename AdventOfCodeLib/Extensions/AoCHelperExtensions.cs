@@ -18,8 +18,19 @@ namespace AdventOfCodeLib.Extensions
             return input.Select(x => x.Select(converter).ToList()).ToList();
         }
 
+        public static bool IsWithinBounds<T>(this List<List<T>> input, int xPosition, int yPosition)
+        {
+            var yBoundary = input.Count;
+            var xBoundary = input.Count != 0 ? input[0].Count : 0;
+
+            return yPosition >= 0 &&
+                   yPosition < yBoundary &&
+                   xPosition >= 0 &&
+                   xPosition < xBoundary;
+        }
+
         public static bool IsDigit(this char character) => character >= 48 && character <= 57;
-        
+
         public static int ToInt(this char character) => character - '0';
     }
 }
